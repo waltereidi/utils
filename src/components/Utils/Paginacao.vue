@@ -4,8 +4,6 @@
             quantidade: Number, 
             multiplicador: Number, 
             limitePaginacao: Number,  
-
-            
     },
     data(){
         return {
