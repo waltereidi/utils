@@ -24,7 +24,9 @@ export default {
     <Paginacao :quantidade="50" 
     :multiplicador="5" 
     @retornaPaginacao="childRetornaPagiancao"
-    :limitePaginacao="6" ></Paginacao>
+    :limitePaginacao="6" 
+    :travarPaginacao="false"
+    ></Paginacao>
 
 
     {{ paginaAtual  }}{{ multiplicador }}

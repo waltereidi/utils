@@ -3,7 +3,9 @@
     props: {
             quantidade: Number, 
             multiplicador: Number, 
-            limitePaginacao: Number,  
+            limitePaginacao: Number,
+            travarPaginacao: Boolean,
+
     },
     data(){
         return {
@@ -15,30 +17,26 @@
     emits: ['retornaPaginacao'],
     methods: {
         retornaPaginacao(pagina) {
+            if(!this.travarPaginacao){
             this.paginacaoAtual = pagina;
-            this.sleep();
             this.$emit('retornaPaginacao', this.paginacaoAtual, this.multiplicador);
-            
+            }
         },
         proximaPagina() {
-            
+            if(!this.travarPaginacao){
             this.paginacaoAtual = this.paginacaoAtual < this.arrayPaginas.length ? this.paginacaoAtual + 1 : this.paginacaoAtual; 
-            this.retornaPaginacao(this.paginacaoAtual);
+                this.retornaPaginacao(this.paginacaoAtual);
+            }
         },
         voltarPagina() {
+            if(!this.travarPaginacao){
             this.paginacaoAtual = this.paginacaoAtual > 1 ? this.paginacaoAtual - 1 : this.paginacaoAtual;
-            this.retornaPaginacao(this.paginacaoAtual);
-        }, 
-        async sleep() {
-            this.ativarPaginacao = false;
-            await setTimeout(() => { }, 500);
-            this.ativarPaginacao = true;
-        }
-
+                this.retornaPaginacao(this.paginacaoAtual);
+            }
+        }        
     },
     beforeMount() {
         this.arrayPaginas = [];
-
         for (var i = 1 , k = 1; i < this.quantidade; i += this.multiplicador , k++){
             this.arrayPaginas.push(k);
         }
