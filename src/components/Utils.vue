@@ -9,6 +9,7 @@ export default {
             paginaAtual: 1, 
             multiplicador: 1,
             configDataSource: Config,
+            showModalImagem : false , 
             
         }
     },
@@ -20,12 +21,16 @@ export default {
         childRetornaPagiancao(paginacaoRetorno , multiplicador) {
             this.paginaAtual = paginacaoRetorno;
             this.multiplicador = multiplicador;
+        },
+         childFecharModalImagem() {
+            this.showModalImagem = false;
         }
-    }
+    }, 
+   
 }
 </script>
 <template>
-    <h1>Utils</h1>
+    <h1>Utils-Paginacao</h1>
     <Paginacao 
         :quantidade="50" 
         :multiplicador="5" 
@@ -34,11 +39,11 @@ export default {
         :travarPaginacao="false">
     </Paginacao>
 
-
+<h1>Utils-ModalImagem</h1>
+<img :src="configDataSource.capaLivroDefault" @click="showModalImagem=true" style="height: 50px;">
     <ModalImagem 
         :srcImagem="configDataSource.capaLivroDefault" 
-        :heightModal="'50'"
-        :widthModal="'50'"
-        :medida="'px'"
-        ></ModalImagem>
+        :showModal="showModalImagem"
+        @fecharModal="childFecharModalImagem">
+    </ModalImagem>
 </template>
