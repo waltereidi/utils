@@ -2,6 +2,7 @@
 import Paginacao from "@/components/Utils/Paginacao.vue";
 import Config from "@/assets/json/bibliotecaconfig.json";
 import ModalImagem from "@/components/Utils/ModalImagem.vue";
+import ModalFormulario from "@/components/Utils/ModalFormulario.vue";
 
 export default { 
     data() {
@@ -10,20 +11,29 @@ export default {
             multiplicador: 1,
             configDataSource: Config,
             showModalImagem : false , 
+            showModalFormulario: {
+                status: 0, 
+                message: '' , 
+            }, 
             
         }
     },
     components: {
         Paginacao,
-        ModalImagem
+        ModalImagem,
+        ModalFormulario, 
     },
     methods: {
         childRetornaPagiancao(paginacaoRetorno , multiplicador) {
             this.paginaAtual = paginacaoRetorno;
             this.multiplicador = multiplicador;
         },
-         childFecharModalImagem() {
-            this.showModalImagem = false;
+        
+        childRetornaDataSourceFormulario( dataSource) {
+            if (dataSource.nome === 'teste') {
+                this.showModalFormulario.status = 200; 
+                this.showModalFormulario.message = 'OK';
+            };  
         }
     }, 
    
@@ -40,10 +50,13 @@ export default {
     </Paginacao>
 
 <h1>Utils-ModalImagem</h1>
-<img :src="configDataSource.capaLivroDefault" @click="showModalImagem=true" style="height: 50px;">
-    <ModalImagem 
-        :srcImagem="configDataSource.capaLivroDefault" 
-        :showModal="showModalImagem"
-        @fecharModal="childFecharModalImagem">
-    </ModalImagem>
+
+    <ModalImagem :srcImagem="configDataSource.capaLivroDefault" ></ModalImagem>
+
+    <h1>Utils-ModalFormulario</h1>
+        <ModalFormulario
+            :resposta="showModalFormulario"
+            @retornaDataSource="childRetornaDataSourceFormulario">
+        </ModalFormulario>
 </template>
+

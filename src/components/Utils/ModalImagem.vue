@@ -2,10 +2,10 @@
 export default { 
     props: {
             srcImagem: String, 
-            showModal: Boolean ,
     },
     data() {
         return {
+            showModal : false
         }
     },
     
@@ -19,11 +19,11 @@ export default {
     methods: {
         keyListener(event) {
             if (event.keyCode === 27) {
-                this.fecharModal(); 
+                this.showModal = false; 
             }
         }, 
         fecharModal() {
-            this.$emit( "fecharModal");
+            this.showModal = false; 
         }
     },
     emits: ['fecharModal'],
@@ -31,7 +31,7 @@ export default {
     }
 </script>
 <template>
-
+    <img :src="srcImagem" @click="showModal = true" style="height: 50px;">
     <div :class="{ 'showModal': showModal, 'hide': !showModal }"> 
         <div class="row">
                 <button id="modalButton" type="button" class="btn-close btn-close-white" aria-label="Close" @click="fecharModal"></button>
