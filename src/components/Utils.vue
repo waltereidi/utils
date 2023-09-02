@@ -1,8 +1,9 @@
 <script lang="ts">
+
 import Paginacao from "@/components/Utils/Paginacao.vue";
 import Config from "@/assets/json/bibliotecaconfig.json";
 import ModalImagem from "@/components/Utils/ModalImagem.vue";
-import ModalFormulario from "@/components/Utils/ModalFormulario.vue";
+import ModalFormulario from "@/components/Utils/ModalFormulario/Modal.vue";
 
 export default { 
     data() {
@@ -15,7 +16,7 @@ export default {
                 status: 0, 
                 message: '' , 
             }, 
-            
+            modalFormulario: Object , 
         }
     },
     components: {
@@ -39,7 +40,10 @@ export default {
    
 }
 </script>
+
+
 <template>
+    {{ modalFormulario }}
     <h1>Utils-Paginacao</h1>
     <Paginacao 
         :quantidade="50" 
@@ -55,8 +59,8 @@ export default {
 
     <h1>Utils-ModalFormulario</h1>
         <ModalFormulario
-            :resposta="showModalFormulario"
-            @retornaDataSource="childRetornaDataSourceFormulario">
+            :dataSource="modalFormulario">
         </ModalFormulario>
+
 </template>
 

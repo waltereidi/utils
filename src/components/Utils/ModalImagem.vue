@@ -56,6 +56,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
     }
     #modalImg{
         margin :auto 0 auto 0;
