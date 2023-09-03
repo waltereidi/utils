@@ -3,7 +3,9 @@
 import Paginacao from "@/components/Utils/Paginacao.vue";
 import Config from "@/assets/json/bibliotecaconfig.json";
 import ModalImagem from "@/components/Utils/ModalImagem.vue";
-import ModalFormulario from "@/components/Utils/ModalFormulario/Modal.vue";
+import ModalFormulario from "@/components/Utils/ModalFormulario/ModalFormulario.vue";
+import ModalContainer from "@/components/Utils/ModalContainer/ModalContainer.vue";
+import GridContainer from "@/components/Utils/DataGrid/GridContainer.vue"; 
 
 export default { 
     data() {
@@ -12,17 +14,20 @@ export default {
             multiplicador: 1,
             configDataSource: Config,
             showModalImagem : false , 
-            showModalFormulario: {
+            mensagemRetornoModalFormulario: {
                 status: 0, 
                 message: '' , 
             }, 
-            modalFormulario: Object , 
+            modalFormulario: Object, 
+            dump: null , 
         }
     },
     components: {
         Paginacao,
         ModalImagem,
         ModalFormulario, 
+        ModalContainer,
+        GridContainer ,  
     },
     methods: {
         childRetornaPagiancao(paginacaoRetorno , multiplicador) {
@@ -30,11 +35,8 @@ export default {
             this.multiplicador = multiplicador;
         },
         
-        childRetornaDataSourceFormulario( dataSource) {
-            if (dataSource.nome === 'teste') {
-                this.showModalFormulario.status = 200; 
-                this.showModalFormulario.message = 'OK';
-            };  
+        childRetornaDataSourceFormulario( dataSource ) {
+            this.dump = dataSource;
         }
     }, 
    
@@ -43,7 +45,6 @@ export default {
 
 
 <template>
-    {{ modalFormulario }}
     <h1>Utils-Paginacao</h1>
     <Paginacao 
         :quantidade="50" 
@@ -56,11 +57,17 @@ export default {
 <h1>Utils-ModalImagem</h1>
 
     <ModalImagem :srcImagem="configDataSource.capaLivroDefault" ></ModalImagem>
-
+{{ dump }}
     <h1>Utils-ModalFormulario</h1>
         <ModalFormulario
-            :dataSource="modalFormulario">
+            @enviarModalFormulario="childRetornaDataSourceFormulario"
+            :mensagemRetornoPai="mensagemRetornoModalFormulario"
+            >
         </ModalFormulario>
+<br><br>
+        <ModalContainer></ModalContainer>
 
+<br> 
+        <GridContainer></GridContainer>
 </template>
 

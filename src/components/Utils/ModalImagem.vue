@@ -31,8 +31,8 @@ export default {
     }
 </script>
 <template>
-    <img :src="srcImagem" @click="showModal = true" style="height: 50px;">
-    <div :class="{ 'showModal': showModal, 'hide': !showModal }"> 
+    <img  class="img-thumbnail" :src="srcImagem" @click="showModal = true" style="height: 50px;">
+    <div :class="{ 'showModal': showModal, 'hide': !showModal }" @click="showModal=false"> 
         <div class="row">
                 <button id="modalButton" type="button" class="btn-close btn-close-white" aria-label="Close" @click="fecharModal"></button>
                 <img :src="srcImagem" id="modalImg"  >
