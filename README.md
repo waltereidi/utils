@@ -18,3 +18,6 @@ com um botão para fechar o modal e um listener da tecla esc
 
 
 <img src="https://github.com/waltereidi/utils/assets/6370415/55e2d6ae-13ae-4875-8e93-8d87e90a8f45">
+<h4>Container de edição de dados</h4>
+<h5>Projeto low-fidelity</h5>
+<img src="https://github.com/waltereidi/utils/assets/6370415/3daef161-eab1-4edd-ab6e-6155cb11e130">
