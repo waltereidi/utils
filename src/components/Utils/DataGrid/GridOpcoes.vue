@@ -1,23 +1,44 @@
 <script lang="ts">
-export default {
+import ModalExcluir from "@/components/Utils/DataGrid/Opcoes/Modal/ModalExcluir.vue";
+import ModalFormularioEditar from "@/components/Utils/DataGrid/Opcoes/Modal/ModalFormularioEditar.vue";
+import ModalFormularioAdicionar from "@/components/Utils/DataGrid/Opcoes/Modal/ModalFormularioAdicionar.vue";
 
+export default {
+    props: {
+        selectedRow: {
+            type: Object!,
+            required: true,
+        },
+        
+    },
+    components: {
+        ModalExcluir,
+        ModalFormularioEditar,
+        ModalFormularioAdicionar,
+    }
 }
 </script>
 <template>
     <div class="row justify-content-md-right">
         <div class="col-9"></div>
-        <div class="col-3">
-            <button class="btn btn-secondary btn-sm">Salvar </button>
-            <button class="btn btn-secondary btn-sm">Editar</button>
-            <button class="btn btn-secondary btn-sm">Excluir </button>
+        <div class="col-1">
+            <ModalExcluir
+                :disabled="selectedRow===null"
+                :dataSource="selectedRow">
+            </ModalExcluir>
+        </div>
+        <div class="col-1">
+            <ModalFormularioEditar 
+                :disabled="selectedRow===null"
+                :dataSource="selectedRow">
+            </ModalFormularioEditar>
+        </div>
+        <div class="col-1">
+            <ModalFormularioAdicionar></ModalFormularioAdicionar>
         </div>
     </div>
 
 </template>
 <style scoped>
-button{
-    margin-left :0.4em ; 
-    margin-right : 0.4em; 
 
-}
 </style>
