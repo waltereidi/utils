@@ -1,8 +1,10 @@
+
 .hide {
     display: none;
 }
 
 .showModal {
+    font-family: Georgia, serif;
     position: fixed;
     top: 0;
     left: 0;

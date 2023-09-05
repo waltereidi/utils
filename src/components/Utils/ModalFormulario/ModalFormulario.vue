@@ -1,7 +1,12 @@
 <script lang="ts">
 import MensagemErro from "@/components/Utils/MensagemErro.vue"
+import { useVuelidate } from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 
 export default {
+    setup() {
+    return { v$ : useVuelidate() }  
+    },
     props: { 
         nome: {
             type: String,
@@ -23,20 +28,21 @@ export default {
             mensagemErro: [],
             dataSource: {
                 nome: this.nome, 
-                nomeMensagem:'Este campo deve ser preenchido',
                 descricao: this.descricao,
-                descricaoMensagem : 'Este campo deve ser preenchido.',
             }
         }
     },
+    validations() {
+        return { 
+            dataSource: {
+                nome: { required }, 
+                descricao: { required } ,
+            }
+        }   
+    },
     emits: ['enviarModalFormulario'], 
     methods: {
-        validarEnvio():array {
-            this.mensagemErro = [];
-            (this.dataSource.nome.length) ? null : this.mensagemErro.push({ code: "danger", message: "O campo nome não pode estar vazio." })  ; 
-            (this.dataSource.descricao.length) ? null : this.mensagemErro.push({ code: "warning" , message:"O campo descricao não pode estar vazio."}); 
-            return this.mensagemErro;
-        },
+      
         montarRetornoFormulario() :object {
             return {
                 nome: this.dataSource.nome, 
@@ -74,10 +80,10 @@ export default {
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Nome</label>
                             <input type="text" v-model="dataSource.nome"
-                                :class="{'form-control is-valid': (dataSource.nome.length > 0),
-                                'form-control is-invalid': (dataSource.nome.length === 0) }" placeholder="nome">
+                                :class="{'form-control is-valid': !v$.dataSource.nome.$invalid ,
+                                'form-control is-invalid': v$.dataSource.nome.$invalid }" placeholder="nome">
                             <!-- Validação -->
-                            <div v-if="dataSource.nome.length == 0"  class="invalid-feedback">{{ dataSource.nomeMensagem }}</div>
+                            <div v-if="v$.dataSource.nome.$invalid"  class="invalid-feedback">Campo obrigatório</div>
                             <div class="valid-feedback" v-else></div>
                         </div>
                     </div>
@@ -88,12 +94,12 @@ export default {
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Descrição</label>
                             <textarea v-model="dataSource.descricao" 
-                                :class="{'form-control is-valid' :(dataSource.descricao.length > 0) ,
-                                'form-control is-invalid' : (dataSource.descricao.length === 0) }" rows="3" 
+                                :class="{'form-control is-valid' : !v$.dataSource.descricao.$invalid ,
+                                'form-control is-invalid' : v$.dataSource.descricao.$invalid }" rows="3" 
                                 placeholder="Descricao...">
                             </textarea>
                             <!-- Validação -->
-                            <div v-if="dataSource.descricao.length==0"  class="invalid-feedback">{{dataSource.descricaoMensagem }}</div>
+                            <div v-if="v$.dataSource.descricao.$invalid"  class="invalid-feedback">Campo obrigatório</div>
                             <div class="valid-feedback" v-else></div>
                         </div>
                     </div>
@@ -103,8 +109,7 @@ export default {
                     <div class="row">
                         <div class="col">
                             <button @click="enviarModalFormulario" class="btn btn-success"
-                            :disabled="(dataSource.nome.length === 0) ||
-                                       (dataSource.nome.length === 0)"
+                            :disabled="v$.dataSource.descricao.$invalid"
                             >Enviar</button>
                         </div>
                         <div class="col">
