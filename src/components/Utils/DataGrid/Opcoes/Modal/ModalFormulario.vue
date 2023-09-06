@@ -2,6 +2,9 @@
 import MensagemErro from '@/components/Utils/MensagemErro.vue'
 import { useVuelidate } from '@vuelidate/core'
 import { required, url, minLength } from '@vuelidate/validators'
+import { MdButton, MdContent, MdTabs } from 'vue-material/dist/components'
+
+
 
 export default {
     setup() {
@@ -76,12 +79,19 @@ export default {
 }
 </script>
 <template>
-    <button :disabled="disabled"
-        :class="{ 'btn btn-warning btn-sm': (nomeBotao === 'Editar'), 'btn btn-success btn-sm': (nomeBotao === 'Adicionar') }"
-        @click="showModal = true">{{ nomeBotao }}</button>
+    <button
+        :class="{ 'mdc-button mdc-button--outlined mdc-button--adicionar': (nomeBotao == 'Adicionar'), 'mdc-button mdc-button--outlined mdc-button--editar': (nomeBotao == 'Editar') }"
+        @click="showModal = true">
+        <span :class="'material-icons'">
+            {{ (nomeBotao === 'Adicionar') ? 'add' : 'edit' }}
+        </span>
+        <span class="mdc-button__label">{{ nomeBotao }}</span>
+    </button>
     <div :class="{ showModal: showModal, hide: !showModal }">
+
         <div class="col-3"></div>
         <div class="col-6">
+
             <div class="containerModalFormulario">
                 <div class="modalFormulario rounded">
                     <div class="row">
@@ -202,11 +212,13 @@ export default {
                         <div class="row">
 
                             <div class="col-1">
-                                <button @click="cancelarFormulario()" class="btn btn-primary">Cancelar</button>
+                                <button @click="cancelarFormulario()"
+                                    class="mdc-button mdc-button--raised mdc-button--cancelar">Cancelar</button>
                             </div>
                             <div class="col-10"></div>
                             <div class="col-1">
-                                <button @click="enviarModalFormulario" class="btn btn-success"
+                                <button @click="enviarModalFormulario"
+                                    class="mdc-button mdc-button--raised mdc-button--confirmar"
                                     :disabled="v$.dataSource.$invalid">
                                     Enviar
                                 </button>
@@ -226,4 +238,6 @@ export default {
 </template>
 <style scoped>
 @import '@/assets/css/utils/modal';
+@import "@/assets/scss/Utils/DataGrid/modal.scss";
+@import 'material-icons/iconfont/material-icons.css';
 </style>

@@ -1,0 +1,24 @@
+@use "@material/card";
+@use "@material/button/styles";
+
+
+.mdc-button {
+ 
+   
+    &--editar{
+        --mdc-theme-primary: #212121;
+    }
+    &--adicionar{
+        --mdc-theme-primary: #00C853;
+
+    }
+    &--excluir{
+        --mdc-theme-primary: #D50000; 
+    }
+    &--confirmar{ 
+        --mdc-theme-primary: #00C853;
+    }
+    &--cancelar{ 
+        --mdc-theme-primary: #2962FF;
+    }
+}

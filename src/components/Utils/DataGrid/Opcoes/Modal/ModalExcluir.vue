@@ -3,33 +3,41 @@ export default {
     props: {
         disabled: {
             type: Boolean,
-            required: false, 
+            required: false,
             default: false
         }
     },
     data() {
         return {
-            showModal: false , 
+            showModal: false,
         }
     }
 }
 </script>
 <template>
-    <button :disabled="disabled" class="btn btn-danger btn-sm" @click="showModal = true">Excluir</button>
-     <div :class="{ 'showModal': showModal, 'hide': !showModal }">
-            <div class="containerModalFormulario">
-                <div class="modalFormulario rounded">
-                    <!-- Validações dos botões de Envio e cancelar -->
-                   <div class="row">
-                        <div class="col">
-                            <button @click="showModal = false" class="btn btn-primary">Cancelar</button>
-                        </div>
+    <button class="mdc-button mdc-button--outlined mdc-button--excluir" @click="showModal = true">
+        <span :class="'material-icons'">
+            delete
+        </span>
+        <span class="mdc-button__label">Deletar</span>
+    </button>
+    <div :class="{ 'showModal': showModal, 'hide': !showModal }">
+        <div class="containerModalFormulario">
+            <div class="modalFormulario rounded">
+                <!-- Validações dos botões de Envio e cancelar -->
+                <div class="row">
+                    <div class="col">
+                        <button @click="showModal = false"
+                            class="mdc-button mdc-button--outlined mdc-button--cancelar">Cancelar</button>
                     </div>
                 </div>
-             </div>
-        
+            </div>
         </div>
-    </template>
-    <style scoped>
-    @import "@/assets/css/utils/modal";
-    </style>
+
+    </div>
+</template>
+<style scoped>
+@import "@/assets/css/utils/modal";
+@import "@/assets/scss/Utils/DataGrid/modal.scss";
+@import 'material-icons/iconfont/material-icons.css';
+</style>
