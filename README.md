@@ -14,7 +14,7 @@ para o componente pai o valor da paginacao .
 <p> Componente que recebe o parametro de abrir modal e o src da imagem e faz um modal da imagem </br> 
 com um botão para fechar o modal e um listener da tecla esc 
 </p>
-![image](https://github.com/waltereidi/utils/assets/6370415/a70733cf-41c9-4cdf-ba53-dcfe6c37b2fc)
+<img src="https://github.com/waltereidi/utils/assets/6370415/a70733cf-41c9-4cdf-ba53-dcfe6c37b2fc">
 
 
 
