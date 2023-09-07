@@ -18,15 +18,11 @@ export default {
 <template>
     <div class="row justify-content-md-right">
         <div class="col-6"></div>
-        <div class="col-2">
+        <div class="col-6">
             <ModalExcluir :disabled="selectedRow === null" :dataSource="selectedRow">
             </ModalExcluir>
-        </div>
-        <div class="col-2">
             <ModalFormulario :nomeBotao="'Editar'" :disabled="selectedRow === null" :selectedRow="selectedRow">
             </ModalFormulario>
-        </div>
-        <div class="col-2">
             <ModalFormulario :nomeBotao="'Adicionar'" :disabled="false"></ModalFormulario>
         </div>
     </div>

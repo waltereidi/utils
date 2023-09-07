@@ -1,0 +1,24 @@
+@use "@material/card";
+@use "@material/button/styles";
+@use "@material/floating-label/mdc-floating-label";
+@use "@material/line-ripple/mdc-line-ripple";
+@use "@material/notched-outline/mdc-notched-outline";
+@use "@material/textfield";
+
+@include textfield.core-styles;
+.mdc-card {
+    &--outlined{
+        background-color: white;
+        max-width: 50%;
+    }
+}
+
+.errorLabel {
+    color: #D50000;
+}
+button {
+    margin-top: 2em;
+}
+.spacing{
+    margin-top:2em; 
+}

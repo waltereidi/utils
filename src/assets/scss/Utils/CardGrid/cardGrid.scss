@@ -1,0 +1,11 @@
+@use "@material/card";
+@use "@material/button/styles";
+@include card.core-styles;
+
+.mdc-card{
+    &__media-content > h4 , h5 {
+        margin-left:1em;
+    }
+    
+
+}

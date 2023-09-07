@@ -33,3 +33,9 @@
     background-color: white;
     border: 3px solid hsla(0, 0%, 2%, 0.3);
 }
+.containerModalFormulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
