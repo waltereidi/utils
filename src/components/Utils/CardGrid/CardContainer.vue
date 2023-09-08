@@ -12,6 +12,12 @@ export default {
     <div class="container">
 
         <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
 
 
     </div>
@@ -22,7 +28,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    padding: 20px;
+    gap: 3em;
+
 }
 </style>

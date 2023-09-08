@@ -4,29 +4,23 @@
 @use "@material/line-ripple/mdc-line-ripple";
 @use "@material/notched-outline/mdc-notched-outline";
 @use "@material/textfield";
+@use "@material/dialog";
 
-@include textfield.core-styles;
-.mdc-card {
-    &--outlined{
-        background-color: white;
-        padding:1.5em;
-        border-radius: 0.5em;
-    }
- 
-}
-
-.errorLabel {
-    color: #D50000;
-}
-button {
-    margin-top: 2em;
-}
-.spacing{
-    margin-top:2em; 
-}
-
+@include dialog.core-styles;
 .hide {
     display: none;
+}
+.mdc-button { 
+    &--cancelar{ 
+        --mdc-theme-primary: #2962FF;
+    }
+    &--confirmar{
+        --mdc-theme-primary: #D50000;
+    }    
+    &--excluir{
+        --mdc-theme-primary:#D50000;
+        margin-bottom: -2em;
+    }
 }
 
 .showModal {
@@ -43,7 +37,6 @@ button {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    
 }
 
 #modalImg {
@@ -55,12 +48,17 @@ button {
 }
 
 .modalFormulario {
-
+    padding-top: 0.3em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
     background-color: white;
-    border: 3px solid hsla(0, 0%, 2%, 0.3);
+    border: 1px solid hsla(0, 0%, 2%, 0.2);
+    max-width: 45vh;
+
 }
 
 .containerModalFormulario {
+    
     display: flex;
     justify-content: center;
     align-items: center;

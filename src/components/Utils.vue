@@ -55,13 +55,15 @@ export default {
     <h1>Utils-ModalImagem</h1>
 
     <ModalImagem :srcImagem="configDataSource.capaLivroDefault"></ModalImagem>
-    {{ dump }}
+
     <h1>Utils-ModalFormulario</h1>
     <ModalFormulario @enviarModalFormulario="childRetornaDataSourceFormulario"
         :mensagemRetornoPai="mensagemRetornoModalFormulario">
     </ModalFormulario>
     <br><br>
-    <ModalContainer></ModalContainer>
+    <ModalContainer :buttonValue="'Excluir'" :title="'Confirmar deletar livro'"
+        :message="'Deseja realmente deletar este livro? Sua ação não poderá ser desfeita.'">
+    </ModalContainer>
 
     <br>
     <GridContainer></GridContainer>

@@ -9,10 +9,7 @@ export default {
             type: String,
             required: true,
         },
-        buttonValue: {
-            type: String,
-            required: true,
-        }
+
 
     },
     data() {
@@ -32,7 +29,12 @@ export default {
 }
 </script>
 <template>
-    <button class="mdc-button mdc-button--confirmar" @click="showModal = true">{{ buttonValue }}</button>
+    <button class="mdc-button mdc-button--excluir" @click="showModal = true">
+        <div class="mdc-button__ripple"></div>
+        <span :class="'material-icons'">
+            delete
+        </span>
+    </button>
 
     <div :class="{ 'showModal': showModal, 'hide': !showModal }">
         <div class="containerModalFormulario">
@@ -51,17 +53,18 @@ export default {
                 <!-- Validações dos botões de Envio e cancelar -->
                 <div class="row">
                     <div class="col-6">
-                        <button @click="confirmar" class="mdc-button mdc-button--confirmar">
-                            <span class="mdc-button__ripple"></span>
-                            <span class="mdc-button__label">Confirmar</span>
-                        </button>
-                    </div>
-                    <div class="col-6">
                         <button @click="showModal = false" class="mdc-button mdc-button--cancelar">
                             <span class="mdc-button__ripple"></span>
                             <span class="mdc-button__label">Cancelar</span>
                         </button>
                     </div>
+                    <div class="col-6">
+                        <button @click="confirmar" class="mdc-button mdc-button--confirmar">
+                            <span class="mdc-button__ripple"></span>
+                            <span class="mdc-button__label">Confirmar</span>
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -69,5 +72,6 @@ export default {
     </div>
 </template>
 <style scoped>
-@import "@/assets/scss/Utils/Modal/modalContainer.scss";
+@import "@/assets/scss/Utils/CardGrid/Modal/modalExcluir.scss";
+@import 'material-icons/iconfont/material-icons.css';
 </style>

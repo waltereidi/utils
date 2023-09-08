@@ -5,7 +5,14 @@
 .mdc-card{
     &__media-content > h4 , h5 {
         margin-left:1em;
+       
     }
-    
-
+    &--outlined{
+        max-width: 20em;
+        min-width: 13em;
+    }
+}
+.alignleft{
+    width:13em;
+    left:0px;
 }

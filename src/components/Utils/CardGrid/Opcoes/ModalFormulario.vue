@@ -12,18 +12,11 @@ export default {
         return { v$: useVuelidate() }
     },
     props: {
-        selectedRow: {
+        parentDataSource: {
             type: Object,
-            required: false,
-        },
-        nomeBotao: {
-            type: String,
             required: true,
         },
-        disabled: {
-            type: Boolean,
-            required: true,
-        },
+
     },
     data() {
         return {
@@ -31,15 +24,15 @@ export default {
             showModal: false,
             mensagemErro: [],
             dataSource: {
-                id: this.id ?? '',
-                titulo: this.titulo ?? '',
-                descricao: this.descricao ?? '',
-                isbn: this.isbn ?? '',
-                capalivro: this.capalivro ?? '',
-                editoras_nome: this.editoras_nome ?? '',
-                autores_nome: this.autores_nome ?? '',
-                idioma: this.idioma ?? '',
-                genero: this.genero ?? ''
+                id: this.parentDataSource == null ? '' : this.parentDataSource.id,
+                titulo: this.parentDataSource == null ? '' : this.parentDataSource.titulo,
+                descricao: this.parentDataSource == null ? '' : this.parentDataSource.descricao,
+                isbn: this.parentDataSource == null ? '' : this.parentDataSource.isbn,
+                capalivro: this.parentDataSource == null ? '' : this.parentDataSource.capalivro,
+                editoras_nome: this.parentDataSource == null ? '' : this.parentDataSource.editoras_nome,
+                autores_nome: this.parentDataSource == null ? '' : this.parentDataSource.autores_nome,
+                idioma: this.parentDataSource == null ? '' : this.parentDataSource.idioma,
+                genero: this.parentDataSource == null ? '' : this.parentDataSource.genero,
             }
         }
     },
@@ -84,7 +77,9 @@ export default {
 <template>
     <button class="mdc-button mdc-card__action mdc-card__action--button" @click="showModal = true">
         <div class="mdc-button__ripple"></div>
-        <span class="mdc-button__label">Editar</span>
+        <span :class="'material-icons'">
+            edit
+        </span>
     </button>
     <div :class="{ 'showModal': showModal, 'hide': !showModal }">
         <div class="containerModalFormulario">
@@ -269,7 +264,8 @@ export default {
 
                         <div class="col-1">
                             <button @click="cancelarFormulario()"
-                                class="mdc-button mdc-button--raised mdc-button--cancelar">Cancelar</button>
+                                class="mdc-button mdc-button--raised mdc-button--cancelar">Cancelar
+                            </button>
                         </div>
                         <div class="col-10"></div>
                         <div class="col-1">
@@ -292,6 +288,6 @@ export default {
     </div>
 </template>
 <style scoped>
-@import "@/assets/css/utils/modal";
 @import "@/assets/scss/Utils/CardGrid/Modal/modalFormulario.scss";
+@import 'material-icons/iconfont/material-icons.css';
 </style>
