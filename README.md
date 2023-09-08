@@ -1,4 +1,4 @@
-<h1> Utils VueJS </h1>
+<h1> Utils VueJS (Em produção)</h1>
 <h2>Projetos utils traz varios componentes para agilizar o desenvolvimento com vuejs </h2>
 
 <h3>Componentes adicionados: </h3>
