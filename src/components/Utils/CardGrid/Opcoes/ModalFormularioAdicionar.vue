@@ -11,29 +11,22 @@ export default {
     setup() {
         return { v$: useVuelidate() }
     },
-    props: {
-        parentDataSource: {
-            type: Object,
-            required: true,
-        },
 
-    },
     data() {
         return {
             configDataSource: config,
             showModal: false,
             mensagemErro: [],
             dataSource: {
-                id: this.parentDataSource == null ? '' : this.parentDataSource.id,
-                titulo: this.parentDataSource == null ? '' : this.parentDataSource.titulo,
-                descricao: this.parentDataSource == null ? '' : this.parentDataSource.descricao,
-                isbn: this.parentDataSource == null ? '' : this.parentDataSource.isbn,
-                capalivro: this.parentDataSource == null ? '' : this.parentDataSource.capalivro,
-                urldownload: this.parentDataSource == null ? '' : this.parentDataSource.urldownload,
-                editoras_nome: this.parentDataSource == null ? '' : this.parentDataSource.editoras_nome,
-                autores_nome: this.parentDataSource == null ? '' : this.parentDataSource.autores_nome,
-                idioma: this.parentDataSource == null ? '' : this.parentDataSource.idioma,
-                genero: this.parentDataSource == null ? '' : this.parentDataSource.genero,
+                titulo: '',
+                descricao: '',
+                isbn: '',
+                capalivro: '',
+                urldownload: '',
+                editoras_nome: '',
+                autores_nome: '',
+                idioma: '',
+                genero: '',
             }
         }
     },
@@ -42,9 +35,9 @@ export default {
             dataSource: {
                 titulo: { required, minLength: minLength(4) },
                 capalivro: { url },
+                urldownload: { url },
                 editoras_nome: { required, minLength: minLength(4) },
                 autores_nome: { required, minLength: minLength(4) },
-                urldownload: { url },
             }
         }
     },
@@ -55,18 +48,16 @@ export default {
             this.$emit('enviarModalFormularioAdicionar', this.dataSource)
         },
         cancelarFormulario(): void {
-
             this.dataSource = {
-                id: this.parentDataSource.id,
-                titulo: this.parentDataSource.titulo,
-                descricao: this.parentDataSource.descricao,
-                isbn: this.parentDataSource.isbn,
-                capalivro: this.parentDataSource.capalivro,
-                urldownload: this.parentDataSource.urldownload,
-                editoras_nome: this.parentDataSource.editoras_nome,
-                autores_nome: this.parentDataSource.autores_nome,
-                idioma: this.parentDataSource.idioma,
-                genero: this.parentDataSource.genero
+                titulo: '',
+                descricao: '',
+                isbn: '',
+                capalivro: '',
+                urldownload: '',
+                editoras_nome: '',
+                autores_nome: '',
+                idioma: '',
+                genero: ''
             };
             this.showModal = false;
         }
@@ -79,11 +70,8 @@ export default {
 
 </script>
 <template>
-    <button class="mdc-button mdc-card__action mdc-card__action--button mdc-button--editar" @click="showModal = true">
-        <div class="mdc-button__ripple"></div>
-        <span :class="'material-icons'">
-            edit
-        </span>
+    <button class="mdc-button mdc-card__action mdc-card__action--button mdc-button--adicionar" @click="showModal = true">
+        Adicionar
     </button>
     <div :class="{ 'showModal': showModal, 'hide': !showModal }">
         <div class="containerModalFormulario">
@@ -283,11 +271,11 @@ export default {
                             </div>
                         </div>
                         <br>
-
                     </div>
 
                     <!-- Validações dos botões de Envio e cancelar -->
                     <div class="row">
+
                         <div class="col-1">
                             <button @click="cancelarFormulario()" class="mdc-button mdc-button--cancelar">Cancelar
                             </button>
@@ -313,6 +301,12 @@ export default {
     </div>
 </template>
 <style scoped>
-@import "@/assets/scss/Utils/CardGrid/Modal/modalFormulario.scss";
 @import 'material-icons/iconfont/material-icons.css';
+@import "@/assets/scss/Utils/CardGrid/Modal/modalFormulario.scss";
+
+.mdc-button {
+    margin-top: 0.3em;
+    margin-right: 1em;
+
+}
 </style>

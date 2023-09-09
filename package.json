@@ -16,11 +16,13 @@
     "@material/button": "^14.0.0",
     "@material/card": "^14.0.0",
     "@material/dialog": "^14.0.0",
+    "@material/shape": "^14.0.0",
     "@material/textfield": "^14.0.0",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
     "material-icons": "^1.13.10",
     "pinia": "^2.1.6",
+    "remove": "^0.1.5",
     "vue": "^3.3.4",
     "vue-material": "^1.0.0-beta-16",
     "vue-router": "^4.2.4"

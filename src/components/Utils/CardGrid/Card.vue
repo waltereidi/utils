@@ -1,16 +1,24 @@
 <script lang="ts">
-
+import config from "@/assets/json/bibliotecaconfig.json";
 import ModalFormulario from './Opcoes/ModalFormulario.vue';
 import ModalExcluir from './Opcoes/ModalExcluir.vue';
 export default {
-    dataSource: {
-        type: Object,
-        required: true,
+    props:
+    {
+        dataSource: {
+            type: Object,
+            required: true,
 
+        }
     },
     components: {
         ModalFormulario,
         ModalExcluir,
+    },
+    data() {
+        return {
+            configDataSource: config,
+        }
     },
     methods: {
         childEnviarModalFormulario() {
@@ -24,11 +32,15 @@ export default {
         <div class="mdc-card__primary-action">
             <div class="mdc-card__media mdc-card__media--square mdc-card">
                 <div class="mdc-card__media-content">
-                    <h4>Titulo</h4>
-                    <h5><sub>Sub</sub></h5>
+                    <h4>{{ dataSource.titulo }}</h4>
+                    <h5><sub>
+                            <p class="text-muted">{{ dataSource.autores_nome }}</p>
+                        </sub></h5>
+                    <div class="cardImage">
+                        <img :src="dataSource.capalivro ?? configDataSource.capaLivroDefault" />
+                    </div>
                 </div>
             </div>
-            <!-- ... additional primary action content ... -->
             <div class="mdc-card__ripple"></div>
         </div>
         <div class="mdc-card__actions">

@@ -4,7 +4,9 @@
 @use "@material/line-ripple/mdc-line-ripple";
 @use "@material/notched-outline/mdc-notched-outline";
 @use "@material/textfield";
+@use "@material/textfield/icon";
 
+@include icon.icon-core-styles;
 @include textfield.core-styles;
 .mdc-card {
     &--outlined{
@@ -12,8 +14,24 @@
         padding:1.5em;
         border-radius: 0.5em;
     }
- 
+
 }
+.mdc-button {
+    &--cancelar{
+        --mdc-theme-primary:#2962FF;
+    }
+    &--confirmar{
+        --mdc-theme-primary:#00C853;
+        margin-right:2em;
+    }
+    &--editar {
+        --mdc-theme-primary: #212121;
+    }
+    &--adicionar {
+        --mdc-theme-primary: #00C853;
+    }
+}
+
 
 .errorLabel {
     color: #D50000;
@@ -65,5 +83,7 @@ button {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    max-width: 110vh;
+    padding:2.5em;
 
 }
