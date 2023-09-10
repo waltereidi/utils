@@ -47,5 +47,15 @@
 }
 .cardGrid{
 overflow: auto;
-max-height: 40vh;
+}
+.cardGridFooter{
+    height: 3em;
+    bottom:0;
+    width: 100%;
+    float: right;
+}
+
+.paginacao {
+    float: right;
+    margin-right: 1em;
 }

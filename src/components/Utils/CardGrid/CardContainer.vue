@@ -2,11 +2,13 @@
 import Card from "@/components/Utils/CardGrid/Card.vue";
 import LivrosDataSource from "@/assets/json/gridContainerDataSource.json";
 import ModalFormularioAdicionar from "./Opcoes/ModalFormularioAdicionar.vue";
+import Paginacao from "../Paginacao.vue";
 
 export default {
     components: {
         Card,
         ModalFormularioAdicionar,
+        Paginacao,
     },
     data() {
         return {
@@ -16,6 +18,10 @@ export default {
     },
     methods: {
         buscar() {
+
+        },
+        childRetornaPaginacao(paginacao, multiplicador) {
+
 
         }
     }
@@ -45,7 +51,11 @@ export default {
                 <Card :dataSource="livro"></Card>
             </div>
         </div>
+        <div class="cardGridFooter">
 
+            <Paginacao :quantidade="30" :multiplicador="6" :limitePaginacao="10" :travarPaginacao="false"
+                @retornaPaginacao="childRetornaPaginacao"></Paginacao>
+        </div>
     </div>
 </template>
 
