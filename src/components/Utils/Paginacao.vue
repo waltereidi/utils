@@ -103,6 +103,4 @@ export default {
         </ul>
     </nav>
 </template>
-<style scoped>
-@import "@/assets/css/Utils/paginacao.css";
-</style>
+<style scoped></style>
